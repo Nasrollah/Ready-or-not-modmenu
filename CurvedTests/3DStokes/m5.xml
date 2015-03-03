@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<NEKTAR xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="http://www.nektar.info/schema/nektar.xsd">
+
+    <EXPANSIONS>
+        <E COMPOSITE="C[0]" NUMMODES="5" FIELDS="u,v,w,p" TYPE="MODIFIED" />
+    </EXPANSIONS>
+
+    <CONDITIONS>
+        <SOLVERINFO>
+            <I PROPERTY="SolverType" VALUE="VelocityCorrectionScheme" />
+            <I PROPERTY="EQTYPE" VALUE="SteadyStokes" />
+            <I PROPERTY="AdvectionForm" VALUE="Convective" />
+            <I PROPERTY="Projection" VALUE="Galerkin" />
+            <I PROPERTY="TimeIntegrationMethod" VALUE="IMEXOrder2" />
+        </SOLVERINFO>
+
+        <PARAMETERS>
+            <P> U             = 1       </P>
+            <P> Re            = 40      </P>
+            <P> Kinvis        = 1/Re    </P>
+        </PARAMETERS>
+
+        <VARIABLES>
+            <V ID="0"> u </V>
+            <V ID="1"> v </V>
+            <V ID="2"> w </V>
+            <V ID="3"> p </V>
+
+        </VARIABLES>
+
+        <BOUNDARYREGIONS>
+            <B ID="0"> C[1] </B>  <!-- Inner Sphere -->
+            <B ID="1"> C[2] </B>  <!-- Outer Sphere -->
+        </BOUNDARYREGIONS>
+
+            <REGION REF="0">  <!-- wall -->
+                <D VAR="u" VALUE="0" />
+                <D VAR="v" VALUE="0" />
+                <D VAR="w" VALUE="0" />
+                <D VAR="p" VALUE="0" />
+            </REGION>
+            <REGION REF="1">  <!-- outflow -->
+                <E VAR="u" VALUE="(U*(1 - z^2/(x^2 + y^2 + z^2))^(1/2)*(1/(2*(x^2 + y^2 + z^2)^(3/2)) - 3/(2*(x^2 + y^2 + z^2)^(1/2)) + 1))/(y^2/x^2 + 1) - (U*y^2*(3/(4*(x^2 + y^2 + z^2)^(1/2)) + 1/(4*(x^2 + y^2 + z^2)^(3/2)) - 1))/(x^2*(y^2/x^2 + 1))" />
+                <E VAR="v" VALUE="(U*y*(3/(4*(x^2 + y^2 + z^2)^(1/2)) + 1/(4*(x^2 + y^2 + z^2)^(3/2)) - 1))/(x*(y^2/x^2 + 1)) + (U*y*(1 - z^2/(x^2 + y^2 + z^2))^(1/2)*(1/(2*(x^2 + y^2 + z^2)^(3/2)) - 3/(2*(x^2 + y^2 + z^2)^(1/2)) + 1))/(x*(y^2/x^2 + 1))" />
+                <E VAR="w" VALUE="(U*z*(1/(2*(x^2 + y^2 + z^2)^(3/2)) - 3/(2*(x^2 + y^2 + z^2)^(1/2)) + 1))/((y^2/x^2 + 1)^(1/2)*(x^2 + y^2 + z^2)^(1/2))" />
+                <E VAR="p" VALUE="-(3*U)/(2*(y^2/x^2 + 1)^(1/2)*(x^2 + y^2 + z^2))" />
+            </REGION>
+
+        </BOUNDARYCONDITIONS>
+
+        <FUNCTION NAME="InitialConditions">
+            <E VAR="u" VALUE="0" />
+            <E VAR="v" VALUE="0" />
+            <E VAR="w" VALUE="0" />
+            <E VAR="p" VALUE="0" />
+        </FUNCTION>
+
+        <FUNCTION NAME="ExactSolution">
+            <E VAR="u" VALUE="(U*(1 - z^2/(x^2 + y^2 + z^2))^(1/2)*(1/(2*(x^2 + y^2 + z^2)^(3/2)) - 3/(2*(x^2 + y^2 + z^2)^(1/2)) + 1))/(y^2/x^2 + 1) - (U*y^2*(3/(4*(x^2 + y^2 + z^2)^(1/2)) + 1/(4*(x^2 + y^2 + z^2)^(3/2)) - 1))/(x^2*(y^2/x^2 + 1))" />
+            <E VAR="v" VALUE="(U*y*(3/(4*(x^2 + y^2 + z^2)^(1/2)) + 1/(4*(x^2 + y^2 + z^2)^(3/2)) - 1))/(x*(y^2/x^2 + 1)) + (U*y*(1 - z^2/(x^2 + y^2 + z^2))^(1/2)*(1/(2*(x^2 + y^2 + z^2)^(3/2)) - 3/(2*(x^2 + y^2 + z^2)^(1/2)) + 1))/(x*(y^2/x^2 + 1))" />
+            <E VAR="w" VALUE="(U*z*(1/(2*(x^2 + y^2 + z^2)^(3/2)) - 3/(2*(x^2 + y^2 + z^2)^(1/2)) + 1))/((y^2/x^2 + 1)^(1/2)*(x^2 + y^2 + z^2)^(1/2))" />
+            <E VAR="p" VALUE="-(3*U)/(2*(y^2/x^2 + 1)^(1/2)*(x^2 + y^2 + z^2))" />
+        </FUNCTION>
+
+    </CONDITIONS>
+
+    <FILTERS>
+        <FILTER TYPE="AeroForces">
+            <PARAM NAME="OutputFile">DragLift.frc</PARAM>
+            <PARAM NAME="OutputFrequency">10</PARAM>
+            <PARAM NAME="Boundary"> B[1] </PARAM>
+        </FILTER>
+    </FILTERS>
+    <GEOMODEL FILENAME="s-s5.xmt_txt">
+    </GEOMODEL>
+
+    <PUMI FILENAME="s-s5_900.sms" ORDER="5">
+    </PUMI>
+
+    <GEOMETRY DIM="3" SPACE="3">
+
+        <DOMAIN> C[0] </DOMAIN>
+
+    </GEOMETRY>
+
+</NEKTAR>

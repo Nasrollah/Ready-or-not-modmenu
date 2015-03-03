@@ -38,6 +38,14 @@
 #include <LocalRegions/MatrixKey.h>
 
 #include <SpatialDomains/MeshComponents.h>
+#include <SpatialDomains/CrvTetGeom.h>
+#include <SpatialDomains/CrvTriGeom.h>
+#include <SpatialDomains/CrvSegGeom.h>
+
+#include <CrvTet.h>
+#include <CrvTri2.h>
+#include <CrvEdge.h>
+#include <LibUtilities/Foundations/ManagerAccess.h>
 
 namespace Nektar
 {
@@ -51,7 +59,6 @@ namespace Nektar
             {
                 return;
             }
-
             if (!m_metricinfo->IsValid())
             {
                 int nDim = m_base.num_elements();
@@ -206,6 +213,31 @@ namespace Nektar
         {
             ASSERTL1(m_geom, "m_geom not defined");
 
+            SpatialDomains::CrvSegGeomSharedPtr  CrvSegmentGeom;
+            SpatialDomains::CrvTriGeomSharedPtr  CrvTriangleGeom;
+            SpatialDomains::CrvTetGeomSharedPtr  CrvTetrahedronGeom;
+            bool isCrvTetGeom = false;
+            bool isCrvTriGeom = false;
+            bool isCrvSegGeom = false;
+            CrvTet  * crv_tet_ptr = NULL;
+            CrvFace * crv_tri_ptr = NULL;
+            CrvEdge * crv_edge_ptr= NULL;
+
+            if ((CrvTetrahedronGeom = boost::dynamic_pointer_cast<SpatialDomains::CrvTetGeom>(m_geom))){
+              isCrvTetGeom = true;
+              crv_tet_ptr = CrvTetrahedronGeom->get_crv_tet();
+            }
+
+            if ((CrvTriangleGeom = boost::dynamic_pointer_cast<SpatialDomains::CrvTriGeom>(m_geom))){
+              isCrvTriGeom = true;
+              crv_tri_ptr = CrvTriangleGeom->get_crv_tri();
+            } 
+
+            if ((CrvSegmentGeom = boost::dynamic_pointer_cast<SpatialDomains::CrvSegGeom>(m_geom))){
+              isCrvSegGeom = true;
+              crv_edge_ptr = CrvSegmentGeom->get_crv_edge();
+            }
+
             // get physical points defined in Geom
             m_geom->FillGeom();
 
@@ -228,6 +260,8 @@ namespace Nektar
             tmp[1] = coords_1;
             tmp[2] = coords_2;
 
+            // doCopy = false;
+
             if (doCopy)
             {
                 for (int i = 0; i < m_geom->GetCoordim(); ++i)
@@ -237,6 +271,76 @@ namespace Nektar
             }
             else
             {
+              if(crv_tet_ptr) {
+
+                int tmpNumPts0 = m_base[0]->GetPointsKey().GetNumPoints();
+                Array<OneD, NekDouble> keyPts0(tmpNumPts0);
+                LibUtilities::PointsManager()[m_base[0]->GetPointsKey()]->GetPoints(keyPts0);
+
+                int tmpNumPts1 = m_base[1]->GetPointsKey().GetNumPoints();
+                Array<OneD, NekDouble> keyPts1(tmpNumPts1);
+                LibUtilities::PointsManager()[m_base[1]->GetPointsKey()]->GetPoints(keyPts1);
+
+                int tmpNumPts2 = m_base[2]->GetPointsKey().GetNumPoints();
+                Array<OneD, NekDouble> keyPts2(tmpNumPts2);
+                LibUtilities::PointsManager()[m_base[2]->GetPointsKey()]->GetPoints(keyPts2);
+
+                for(int i = 0; i < tmpNumPts2; ++i) // eta3 dir
+                {
+                    for(int j = 0; j < tmpNumPts1; ++j) // eta2 dir
+                    {
+                        for(int k = 0; k < tmpNumPts0; ++k) // eta1 dir
+                        {
+                            Point3d in_eta(keyPts0[k],
+                                           keyPts1[j],
+                                           keyPts2[i]);
+                            Point3d out;
+                            crv_tet_ptr->eval_by_coll_eta(in_eta, out);
+                            int qindex = i * tmpNumPts0 * tmpNumPts1 + j * tmpNumPts0 + k;
+                            tmp[0][qindex] = out[0];
+                            tmp[1][qindex] = out[1];
+                            tmp[2][qindex] = out[2];
+                        }
+                    }
+                }
+              }
+              else if(crv_tri_ptr) {
+                int tmpNumPts0 = m_base[0]->GetPointsKey().GetNumPoints();
+                Array<OneD, NekDouble> keyPts0(tmpNumPts0);
+                LibUtilities::PointsManager()[m_base[0]->GetPointsKey()]->GetPoints(keyPts0);
+                int tmpNumPts1 = m_base[1]->GetPointsKey().GetNumPoints();
+                Array<OneD, NekDouble> keyPts1(tmpNumPts1);
+                LibUtilities::PointsManager()[m_base[1]->GetPointsKey()]->GetPoints(keyPts1);
+                for(int i = 0; i < tmpNumPts1; ++i) // eta2 dir
+                {
+                  for(int j = 0; j < tmpNumPts0; ++j) // eta1 dir
+                  {
+                    Point3d in_eta(keyPts0[j], keyPts1[i], 0.0);
+                    Point3d out;
+                    crv_tri_ptr->eval_by_coll_eta(in_eta, out);
+                    tmp[0][i * tmpNumPts0 + j] = out[0];
+                    tmp[1][i * tmpNumPts0 + j] = out[1];
+                    tmp[2][i * tmpNumPts0 + j] = out[2];
+                  }
+                }
+
+              }
+              else if (crv_edge_ptr) {
+                int tmpNumPts0 = m_base[0]->GetPointsKey().GetNumPoints();
+                Array<OneD, NekDouble> keyPts0(tmpNumPts0);
+                LibUtilities::PointsManager()[m_base[0]->GetPointsKey()]->GetPoints(keyPts0);
+                for(int j = 0; j < tmpNumPts0; ++j) // eta1 dir
+                {
+                  double xi = -0.5 * keyPts0[j] + 0.5;
+                  Point3d in, out;
+                  in = Point3d(xi, 0.0, 0.0);
+                  crv_edge_ptr->eval_by_xi(in, out);
+                  tmp[0][j] = out[0];
+                  tmp[1][j] = out[1];
+                  tmp[2][j] = out[2];
+                }
+              }
+              else {
                 for (int i = 0; i < m_geom->GetCoordim(); ++i)
                 {
                     Array<OneD, NekDouble> tmpGeom(nqGeom);
@@ -277,6 +381,7 @@ namespace Nektar
                         }
                     }
                 }
+              }
             }
         }
 

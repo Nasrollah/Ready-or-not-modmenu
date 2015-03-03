@@ -207,7 +207,7 @@ namespace Nektar
             /// \brief Return the BasisKey corresponding to a face of an element
             SPATIAL_DOMAINS_EXPORT LibUtilities::BasisKey GetFaceBasisKey(Geometry2DSharedPtr face, const int flag, const std::string variable = "DefaultVar");
 
-        protected:
+        // protected:
             void ReadEdges    (TiXmlDocument &doc);
             void ReadFaces    (TiXmlDocument &doc);
             void ReadElements (TiXmlDocument &doc);
@@ -215,7 +215,7 @@ namespace Nektar
             void ResolveGeomRef(const std::string &prevToken, const std::string &token,
                     Composite& composite);
 
-        private:
+        // private:
             void PopulateFaceToElMap(Geometry3DSharedPtr element, int kNfaces);
             boost::unordered_map<int, ElementFaceVectorSharedPtr> m_faceToElMap;
 

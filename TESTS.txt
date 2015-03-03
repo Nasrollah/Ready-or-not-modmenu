@@ -1,0 +1,4 @@
+The following tests FAILED:
+149 - CompressibleFlowSolver_CylinderSubsonic_NS_WeakDG_LDG_SEM_VariableMu_par (Failed)
+Errors while running CTest
+

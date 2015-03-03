@@ -95,7 +95,7 @@ namespace SpatialDomains
                 const GeomFactors &rhs);
 
             /// Destructor.
-            SPATIAL_DOMAINS_EXPORT ~GeomFactors();
+            SPATIAL_DOMAINS_EXPORT virtual ~GeomFactors();
 
             /// Return the derivative of the mapping with respect to the
             /// reference coordinates,
@@ -148,7 +148,8 @@ namespace SpatialDomains
             std::map<LibUtilities::PointsKeyVector, Array<TwoD, NekDouble> >
                                                 m_derivFactorCache;
 
-        private:
+//        private:
+        protected:
             /// Tests if the element is valid and not self-intersecting.
             void CheckIfValid();
 
