@@ -92,8 +92,8 @@ namespace Nektar
          *
          */
         CrvTriGeom::CrvTriGeom(const int id, const SegGeomSharedPtr edges[],
-                const StdRegions::Orientation eorient[]):
-                TriGeom(id, edges, eorient)
+                const StdRegions::Orientation eorient[], int order):
+                TriGeom(id, edges, eorient), m_order(order)
         {
         }
 
@@ -101,8 +101,8 @@ namespace Nektar
                                const SegGeomSharedPtr edges[],
                                const StdRegions::Orientation eorient[],
                                CrvFace * in_crvface):
-                m_crvface(in_crvface),
-                TriGeom(id, edges, eorient)
+                TriGeom(id, edges, eorient),
+                m_crvface(in_crvface)
         {
         }
 
@@ -136,9 +136,8 @@ namespace Nektar
 
         CrvFace * CrvTriGeom::get_crv_tri()
         {
-          return m_crvface;
+            return m_crvface;
         }
-
         /**
          * Set up GeoFac for this geometry using Coord quadrature distribution
          */
@@ -200,11 +199,39 @@ namespace Nektar
 //              pMeshMdl pumi_mesh = PUMI_NektarppAdapt::Instance()->PumiMesh();
 //              pPart pumi_part;
 //              PUMI_Mesh_GetPart(pumi_mesh, 0, pumi_part);
-
+              CrvFace * beztri = NULL;
+              cout << "ORDER " << m_order << endl;
+              switch (m_order){
+                case 1:
+                {
+                  beztri = new CrvTri1(pumi_vert_vec);                  
+                  break;
+                }
+                case 2:
+                {
+                  beztri = new CrvTri2(pumi_vert_vec);                  
+                  break;
+                }
+                case 3:
+                {
+                  beztri = new CrvTri3(pumi_vert_vec);
+                  break;
+                }
+                case 4:
+                {
+                  beztri = new CrvTri4C0(pumi_vert_vec);
+                  break;
+                }
+                case 5:
+                {
+                  beztri = new CrvTriBlending(pumi_vert_vec,m_order);
+                  break;
+                }
+              }
 //              CrvFace * beztri = new CrvTri2(pumi_vert_vec);
 //              CrvFace * beztri = new CrvTri3(pumi_vert_vec);
 //              CrvFace * beztri = new CrvTri4C0(pumi_vert_vec);
-              CrvFace * beztri = new CrvTriBlending(pumi_vert_vec);
+              // CrvFace * beztri = new CrvTriBlending(pumi_vert_vec,m_order);
               std::cout << "interp error of CrvFace: " << beztri->interp_error() << std::endl;
 
               m_crvface = beztri;

@@ -167,7 +167,7 @@ namespace Nektar
                 };
 
                 // now re-route tri geom creation to use CrvTriGeom
-                CrvTriGeomSharedPtr crvtrigeom = MemoryManager<CrvTriGeom>::AllocateSharedPtr(indx, edges, edgeorient);
+                CrvTriGeomSharedPtr crvtrigeom = MemoryManager<CrvTriGeom>::AllocateSharedPtr(indx, edges, edgeorient,2);
 //                TriGeomSharedPtr crvtrigeom = MemoryManager<TriGeom>::AllocateSharedPtr(indx, edges, edgeorient);
 
                 crvtrigeom->SetGlobalID(indx);

@@ -4,7 +4,7 @@
     xsi:noNamespaceSchemaLocation="http://www.nektar.info/schema/nektar.xsd">
 
     <EXPANSIONS>
-        <E COMPOSITE="C[0]" NUMMODES="$NUMMODES" FIELDS="u,v,w,p" TYPE="MODIFIED" />
+        <E COMPOSITE="C[0]" NUMMODES="1" FIELDS="u,v,w,p" TYPE="MODIFIED" />
     </EXPANSIONS>
 
     <CONDITIONS>
@@ -18,10 +18,10 @@
         </SOLVERINFO>
 
         <PARAMETERS>
-            <P> TimeStep      = $TIMESTEP            </P>
-            <P> NumSteps      = $NUMSTEPS            </P>
-            <P> IO_CheckSteps = $IO_CHECKSTEPS       </P>
-            <P> IO_InfoSteps  = $IO_INFOSTEPS        </P>
+            <P> TimeStep      = 0.001            </P>
+            <P> NumSteps      = 0            </P>
+            <P> IO_CheckSteps = 200       </P>
+            <P> IO_InfoSteps  = 200        </P>
             <P> U             = 1       </P>
             <P> Re            = 40      </P>
             <P> Kinvis        = 1/Re    </P>
@@ -80,7 +80,7 @@
             <PARAM NAME="Boundary"> B[1] </PARAM>
         </FILTER>
     </FILTERS> -->
-    <GEOMODEL FILENAME="$GEOMETRY">
+    <GEOMODEL FILENAME="s-s5.xmt_txt">
 
         <COMPOSITE>
             <!-- Ignore the main region for now -->
@@ -92,7 +92,7 @@
 
     </GEOMODEL>
 
-    <PUMI FILENAME="$PUMIMESH" ORDER="$ORDER">
+    <PUMI FILENAME="s-s5_72_pumi.sms" ORDER="1">
     </PUMI>
 
     <GEOMETRY DIM="3" SPACE="3">

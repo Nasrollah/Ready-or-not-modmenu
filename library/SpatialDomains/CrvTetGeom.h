@@ -50,17 +50,22 @@ namespace Nektar
 
         class CrvTetGeom: virtual public TetGeom 
         {
+
             public:
                 SPATIAL_DOMAINS_EXPORT CrvTetGeom ();
-                SPATIAL_DOMAINS_EXPORT CrvTetGeom (const TriGeomSharedPtr faces[]);
+                SPATIAL_DOMAINS_EXPORT CrvTetGeom (const TriGeomSharedPtr faces[], int order);
                 SPATIAL_DOMAINS_EXPORT ~CrvTetGeom();
                 virtual bool v_IsCurved() const
                 {
                     return true;
                 }
                 virtual void      v_GenGeomFactors();
-                SPATIAL_DOMAINS_EXPORT CrvTet * get_crv_tet();
+                SPATIAL_DOMAINS_EXPORT CrvTet * get_crv_tet(); 
+
+            private:
                 CrvTet * m_crvtet;
+                int m_order;
+
         };
 
         typedef boost::shared_ptr<CrvTetGeom> CrvTetGeomSharedPtr;

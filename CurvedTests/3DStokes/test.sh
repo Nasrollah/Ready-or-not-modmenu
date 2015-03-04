@@ -2,7 +2,7 @@
 
 # These are exported so be used in envsubst
 export TIMESTEP=0.001 
-export NUMSTEPS=2
+export NUMSTEPS=0
 export IO_CHECKSTEPS=200
 export IO_INFOSTEPS=200
 export GEOMETRY=s-s5.xmt_txt
@@ -20,6 +20,7 @@ for N in ${MODES[@]}; do
 	# echo " done"
 	$FLDTOVTK m${N}.xml m${N}.fld m${N}.vtu
 	# $FLDTOVTK m${N}.xml m${N}.chk 
+	# This just makes things viewable, so there arent nans everywhere
 	sed -i 's/nan/10.0/g' m${N}.vtu
 
 done

@@ -83,7 +83,8 @@ namespace Nektar
                 SPATIAL_DOMAINS_EXPORT CrvTriGeom(
                         const int id,
                         const SegGeomSharedPtr edges[],
-                        const StdRegions::Orientation eorient[]);
+                        const StdRegions::Orientation eorient[],
+                        int order);
 
                 /// added new ctor, Kai -- 11/6/2014
                 SPATIAL_DOMAINS_EXPORT CrvTriGeom(
@@ -105,7 +106,12 @@ namespace Nektar
                 SPATIAL_DOMAINS_EXPORT virtual void v_GenGeomFactors();
 
                 SPATIAL_DOMAINS_EXPORT CrvFace * get_crv_tri();
+
+            private:
+
                 CrvFace * m_crvface;
+                int m_order;
+
         };
 
     }; //end of namespace SpatialDomains

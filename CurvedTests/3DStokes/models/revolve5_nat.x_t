@@ -1,0 +1,47 @@
+**ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz**************************
+**PARASOLID !"#$%&'()*+,-./:;<=>?@[\]^_`{|}~0123456789**************************
+**PART1;
+MC=unknown;
+MC_MODEL=unknown;
+MC_ID=unknown;
+OS=unknown;
+OS_RELEASE=unknown;
+FRU=sdl_parasolid_customer_support;
+APPL=parasolid_acceptance_tests;
+SITE=unknown;
+USER=unknown;
+FORMAT=text;
+GUISE=transmit;
+KEY=/users/zaided/models/revolve5_nat.x_t;
+FILE=/users/zaided/models/revolve5_nat.x_t;
+DATE=unknown;
+**PART2;
+SCH=SCH_2600217_25001;
+USFLD_SIZE=1;
+**PART3;
+**END_OF_HEADER*****************************************************************
+T51 : TRANSMIT FILE created by modeller version 260021723 SCH_2600217_25001_1300
+6189 1 12 29 CCCCCCCCCCCCCDI5 owner1040 0 CCCCCCCCCA16 index_map_offset0 0 1 dA9
+ index_map82 0 A17 node_id_index_map82 0 A20 schema_embedding_map82 0 A5 child12
+ 0 A14 lowest_node_id0 0 1 dZ1 179 2 3 0 0 0 0 1e3 1e-8 0 0 0 1 0 1 1 4 5 0 0 6
+ 0 0 0 0 0 0 0 0 0 81 255 1 2 179 7 1 8 0 0 0 9 0 70 11 CI9 list_type0 0 1 uI10
+ notransmit0 0 1 lCCCDCCDI12 finger_index0 0 1 dI12 finger_block1012 0 CZ3 0 4 T
+1 0 0 5 20 1 10 10 0 13 255 4 3 0 1 11 12 0 0 13 0 0 53 255 5 75 0 12 14 0 0 -0
+ 0 0 2.5 0 1 0 1 0 -234291072916505e-29 0 19 8 CCCCCCCA5 owner12 0 Z6 34 0 1 15
+ 0 16 V0 0 19 15 158 0 1 13 6 17 V0 0 13 16 33 0 0 0 0 0 0 6 12 0 14 255 12 70 1
+8 ?0 0 0 4 5 -0 0 0 0 16 0 81 1 18 176 19 12 20 0 0 21 22 0 80 255 1 19 0 23 800
+1 0 0 0 0 3 5 0 0 0 FFFFTFTFFFFFFF2 0 81 1 20 175 24 12 25 18 0 26 27 0 81 1 21
+ 178 19 28 26 0 18 0 29 0 83 255 3 22 .5960784 .6666667 .6862745 0 14 28 32 21 ?
+0 0 0 11 14 -0 0 0 0 17 0 81 1 26 177 24 28 30 21 20 0 31 0 83 3 29 .5960784 .66
+66667 .6862745 0 80 1 24 32 33 8015 0 0 0 0 3 5 0 0 0 FFFFTFFFFFFFFF2 0 81 1 30
+ 174 34 28 0 26 25 0 35 0 83 1 31 0 0 80 1 34 36 37 9000 1 1 1 1 1 1 1 1 0 FFFFT
+FTFFFFFFF3 0 81 1 25 173 34 12 0 20 0 30 38 0 84 255 32 35 3955efcd163990fa5b49e
+f7e9c3a43080 84 32 38 017e7c266c2c187e3fb38b19286a922d0 79 255 15 37 UGS/ObjectS
+tate0 79 21 33 SDL/TYSA_TRANSLUCENCY0 13 11 156 0 1 0 28 0 0 13 0 0 53 14 74 0 2
+8 0 5 0 +0 0 0 .5 0 1 0 1 0 -234291072916505e-29 0 13 17 157 0 0 0 0 0 0 15 28 0
+ 19 13 1 0 1 0 15 4 S0 0 83 1 27 0 0 79 15 23 SDL/TYSA_COLOUR0 74 4 CI16 index_m
+ap_offset0 0 1 dCCZ20 10 5 0 0 8 30 26 21 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 81 2
+ 8 172 39 1 0 2 0 0 40 41 0 80 2 39 42 43 8004 0 0 0 0 3 5 0 0 0 FFTFFFFFFFFFFF2
+ 3 0 83 1 40 7830.64 0 84 8 41 Kg/Cu M 0 79 16 43 SDL/TYSA_DENSITY0 80 1 7 34 44
+ 9000 0 0 0 0 3 5 0 0 0 FFTFFFFFFFFFFF1 0 82 255 1 9 129 0 79 24 44 UG2/BODY_COL
+OR_ATTRIBUTE0 1 0 

@@ -60,6 +60,7 @@ namespace Nektar
         class CrvSegGeom: public SegGeom
         {
             public:
+
                 SPATIAL_DOMAINS_EXPORT CrvSegGeom();
 
                 SPATIAL_DOMAINS_EXPORT CrvSegGeom(int id, const int coordim);
@@ -94,6 +95,8 @@ namespace Nektar
                 SPATIAL_DOMAINS_EXPORT virtual void v_GenGeomFactors();
 
                 SPATIAL_DOMAINS_EXPORT CrvEdge * get_crv_edge();
+
+            private:
                 CrvEdge * m_crvedge;
         };
 

@@ -1,0 +1,46 @@
+**ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz**************************
+**PARASOLID !"#$%&'()*+,-./:;<=>?@[\]^_`{|}~0123456789**************************
+**PART1;
+MC=SUSE Linux-64;
+MC_MODEL=genuineintel family 6 model 13 stepping 7, intel(r) core(tm) i7-3820 cpu @ 3.60ghz;
+MC_ID=twister;
+OS=linux;
+OS_RELEASE=2.6.32-5-amd64 #1 smp wed feb 18 13:14:10 utc 2015;
+FRU=mdc_ugii_v7.0_djl_can_vrh;
+APPL=unigraphics;
+SITE=unknown;
+USER=zaided;
+FORMAT=text;
+GUISE=transmit;
+KEY=s-s50;
+FILE=/users/zaided/models/s-s50.xmt_txt;
+DATE=20-feb-2015;
+**PART2;
+SCH=SCH_2600169_25001;
+USFLD_SIZE=0;
+**PART3;
+**END_OF_HEADER*****************************************************************
+T51 : TRANSMIT FILE created by modeller version 260016923 SCH_2600169_25001_1300
+6189 0 12 29 CCCCCCCCCCCCCDI5 owner1040 0 CCCCCCCCCA16 index_map_offset0 0 1 dA9
+ index_map82 0 A17 node_id_index_map82 0 A20 schema_embedding_map82 0 A5 child12
+ 0 A14 lowest_node_id0 0 1 dZ1 47 2 3 0 0 0 0 1e3 1e-8 0 0 0 1 0 1 1 4 5 0 0 6 0
+ 0 0 0 0 0 0 0 81 255 1 2 47 7 1 8 0 0 0 9 70 11 CI9 list_type0 0 1 uI10 notrans
+mit0 0 1 lCCCDCCDI12 finger_index0 0 1 dI12 finger_block1012 0 CZ3 0 4 T1 0 0 6
+ 20 1 10 10 13 255 4 3 0 1 11 12 0 0 13 0 53 255 5 6 0 12 14 0 0 +0 0 0 25 0 0 1
+ 1 0 0 19 8 CCCCCCCA5 owner12 0 Z6 1 0 1 13 0 15 V0 19 13 5 0 1 16 6 4 S0 13 15
+ 4 0 0 0 0 0 0 6 12 14 255 12 2 17 ?0 0 0 4 5 +0 0 0 0 15 81 1 17 44 18 12 19 0
+ 0 20 21 80 255 1 18 0 22 8001 0 0 0 0 3 5 0 0 0 FFFFTFTFFFFFFF2 81 1 19 43 23 1
+2 24 17 0 25 26 81 1 20 46 18 27 25 0 17 0 28 83 255 3 21 .5960784 .6666667 .686
+2745 14 27 23 20 ?0 0 0 11 14 -0 0 0 0 29 81 1 25 45 23 27 30 20 19 0 31 83 3 28
+ .5960784 .6666667 .6862745 80 1 23 32 33 8015 0 0 0 0 3 5 0 0 0 FFFFTFFFFFFFFF2
+ 81 1 30 40 34 27 0 25 24 0 35 83 1 31 0 80 1 34 36 37 9000 1 1 1 1 1 1 1 1 0 FF
+FFTFTFFFFFFF3 81 1 24 39 34 12 0 19 0 30 38 84 255 32 35 c33f924a88aa5a87051d6d4
+c91aad60f84 32 38 1a0c562fbbed91d9a73f4ba2a7f84d8179 255 15 37 UGS/ObjectState79
+ 21 33 SDL/TYSA_TRANSLUCENCY13 11 21 0 1 0 27 0 0 13 0 53 14 29 0 27 0 5 0 +0 0
+ 0 .5 0 0 1 1 0 0 13 29 27 0 0 0 0 0 0 16 27 19 16 26 0 1 0 13 29 V0 83 1 26 0 7
+9 15 22 SDL/TYSA_COLOUR74 4 CI16 index_map_offset0 0 1 dCCZ20 10 6 0 0 39 30 8 2
+5 20 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 81 2 39 38 40 1 0 8 0 0 41 42 81 1 8 42 43 1
+ 39 2 0 0 44 80 1 43 45 46 9000 0 0 0 0 3 5 0 0 0 FFTFFFFFFFFFFF1 82 255 1 44 9
+ 79 7 46 body_id80 2 40 47 48 8004 0 0 0 0 3 5 0 0 0 FFTFFFFFFFFFFF2 3 83 1 41 7
+830.64 84 8 42 Kg/Cu M 79 16 48 SDL/TYSA_DENSITY80 1 7 49 50 9000 0 0 0 0 3 5 0
+ 0 0 FFTFFFFFFFFFFF1 82 1 9 129 79 24 50 UG2/BODY_COLOR_ATTRIBUTE1 0 

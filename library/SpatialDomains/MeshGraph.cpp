@@ -149,7 +149,7 @@ namespace Nektar
             }
             // instantiate the dimension-specific meshgraph classes
             bool pumi = (pSession->GetElement("NEKTAR")->FirstChildElement("PUMI"));
-            cout << pumi << " PUMI " << (pSession->GetElement("NEKTAR")->FirstChildElement("PUMI")) << endl;
+
             switch(meshDim)
             {
             case 1:

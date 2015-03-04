@@ -193,7 +193,6 @@ namespace Nektar
             }
 
             pMeshMdl pumi_mesh = PUMI_NektarppAdapt::Instance()->PumiMesh();
-
             pPart pumi_part;
             PUMI_Mesh_GetPart(pumi_mesh, 0, pumi_part);
             m_meshPartitioned = false;
@@ -247,7 +246,6 @@ namespace Nektar
               // create pumi curved edge object
               CrvEdge * bezseg = NULL;
 
-
               switch (m_CurveOrder){
                 case 1:
                 {
@@ -278,7 +276,6 @@ namespace Nektar
                   ASSERTL1(false, "Curve Order not defined.");
                   break;
               }
-
               std::cout << "interp error of CrvEdge: " << bezseg->interp_error() << std::endl;
 
               // modified version of nektar edge with bezier geom
@@ -407,7 +404,7 @@ namespace Nektar
 //                      TriGeomSharedPtr crvtrigeom = MemoryManager<TriGeom>::AllocateSharedPtr(indx, edges, edgeorient);
 
                       // modified version of nektar crv tri face
-                      CrvTriGeomSharedPtr crvtrigeom = MemoryManager<CrvTriGeom>::AllocateSharedPtr(indx, edges, edgeorient);
+                      CrvTriGeomSharedPtr crvtrigeom = MemoryManager<CrvTriGeom>::AllocateSharedPtr(indx, edges, edgeorient, m_CurveOrder);
 
                       crvtrigeom->SetGlobalID(indx);
                       m_triGeoms[indx] = crvtrigeom;
@@ -444,7 +441,7 @@ namespace Nektar
               tfaces[3] = m_triGeoms[fid];
 
               // create tet
-              CrvTetGeomSharedPtr tetgeom(MemoryManager<CrvTetGeom>::AllocateSharedPtr(tfaces));
+              CrvTetGeomSharedPtr tetgeom(MemoryManager<CrvTetGeom>::AllocateSharedPtr(tfaces, m_CurveOrder));
               tetgeom->SetGlobalID(indx);
 
               m_tetGeoms[indx] = tetgeom;

@@ -42,6 +42,7 @@
 
 #include <SpatialDomains/GeomFactorsPUMI.h>
 // -- scorec -- //
+#include "CrvTet.h"
 #include "CrvTet2.h"
 #include "CrvTetBlending.h"
 #include <PUMI_NektarppAdapt.h>
@@ -60,8 +61,8 @@ namespace Nektar
         {
         }
         
-        CrvTetGeom::CrvTetGeom(const TriGeomSharedPtr faces[]) : 
-            TetGeom(faces)
+        CrvTetGeom::CrvTetGeom(const TriGeomSharedPtr faces[], int order) : 
+            TetGeom(faces), m_order(order)
         {
         }
         
@@ -73,7 +74,6 @@ namespace Nektar
         {
             return m_crvtet;
         }
-
         void CrvTetGeom::v_GenGeomFactors()
         {
             // create pumi geom factors using crv tet 2 
@@ -100,8 +100,25 @@ namespace Nektar
                 std::vector<pVertex> pumi_vert_vec;
                 for (int i = 0; i < 4; ++i)
                   pumi_vert_vec.push_back(pumi_verts[i]);
-                m_crvtet = new CrvTetBlending(pumi_vert_vec);
-            
+                switch (m_order){
+                    case 1:
+                    case 2:
+                    // {
+                    //     m_crvtet = new CrvTet(pumi_vert_vec);
+                    //     break;
+                    // }
+                    case 3:
+                    case 4:
+                    {
+                        m_crvtet = new CrvTet2(pumi_vert_vec);
+                        break;
+                    }
+                    case 5:
+                    {
+                        m_crvtet = new CrvTetBlending(pumi_vert_vec, m_order);
+                        break;
+                    }
+                }
 
                 // creates a GeomFactorsPUMI object instead of original GeomFactors,  Kai -- 11-19-2014
                 m_geomFactors = MemoryManager<GeomFactorsPUMI>::AllocateSharedPtr(

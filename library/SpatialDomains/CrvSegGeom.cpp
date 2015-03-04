@@ -88,9 +88,8 @@ namespace Nektar
                 const int coordim,
                 const PointGeomSharedPtr vertex[],
                 CrvEdge * crv_edge):
-            m_crvedge(crv_edge),
-//            SegGeom(id, coordim, vertex)
-            SegGeom()
+            SegGeom(),
+            m_crvedge(crv_edge)
         {
 
             m_shapeType = LibUtilities::eSegment;
@@ -166,8 +165,7 @@ namespace Nektar
         {
           return m_crvedge;
         }
-
-
+        
         void CrvSegGeom::v_GenGeomFactors()
         {
 //            SegGeom::v_GenGeomFactors();

@@ -1,0 +1,220 @@
+smi 5 0
+<part> smd 18
+parasolid 18 1
+*
+-1
+-2.5 -2.5 -2.5
+2.5 2.5 2.5
+1 1007 5 0
+0 0 -2.5 -2.5 -2.5
+2.5 2.5 2.5
+_sim_empty
+-1
+0 0 0 0
+
+0
+1 2 0 0
+0 0 0 0
+2
+70 2 5 0 2 0
+0 
+  0 
+0
+_sim_empty
+70 
+1 0.00070616518637188442 -0.2351097390652459 2.4312213525753954 -0.58237426731233477 -0.001716844164937557
+0
+32 2 5 0 2 0
+0 
+  0 
+0
+_sim_empty
+32 
+1 0.00070616518637188442 -0.2351097390652459 0.48624427051507907 -0.11647485346246696 -0.00034336883298751142
+0
+1 8 1 1
+70 0 2 8 1 1
+32 0 1 3 5 0 3 0 2 
+1 2 
+0
+0
+_sim_empty
+1 
+0 -1
+4 8 2 1
+70 1 5 8 2 1
+32 1 2 3 8 0 303 0 2 
+4 5 
+0
+0
+_sim_empty
+-1
+0
+0 -1
+0 -1
+0 -1
+<part> auxmm 2
+0
+<part> attributes 10
+AttDBVersion 10 8
+0 1 0 14 20
+1 2 3
+0 
+9 Smoothing
+0 
+0 0 1
+0
+0
+1 1
+0 
+2
+1 2 4
+0 
+13 SmoothingType
+0 
+0 0 1
+0
+0
+1 1
+0 
+0
+1 2 5
+0 
+12 Optimization
+0 
+0 0 1
+0
+0
+1 1
+0 
+1
+1 2 6
+0 
+16 FixIntersections
+0 
+0 0 1
+0
+0
+1 1
+0 
+1
+1 2 7
+0 
+16 EnforceGradation
+0 
+0 0 1
+0
+0
+1 1
+0 
+0
+1 3 8
+0 
+17 FaceRotationLimit
+0 
+0 0 1
+0
+0
+2 1
+0 
+15
+1 7 2
+0 
+13 SurfaceMesher
+0 
+0 0 1
+0
+6 3 4 5 6 7 8
+1 2 10
+0 
+11 EnforceSize
+0 
+0 0 1
+0
+0
+1 1
+0 
+1
+1 2 11
+0 
+9 Smoothing
+0 
+0 0 1
+0
+0
+1 1
+0 
+1
+1 2 12
+0 
+13 SmoothingType
+0 
+0 0 1
+0
+0
+1 1
+0 
+0
+1 2 13
+0 
+12 Optimization
+0 
+0 0 1
+0
+0
+1 1
+0 
+1
+1 7 9
+0 
+12 VolumeMesher
+0 
+0 0 1
+0
+4 10 11 12 13
+1 10 14
+0 
+9 parasolid
+0 
+0 0 1
+0
+0
+1
+4
+40 file:///users/zaided/models/revolve5.smd27 model.nonmanifold.parasolid6 # 1 0 0 1 3 20
+0 
+8 MeshSize
+8 Relative
+0 0 1
+0
+0
+2 -1
+0 
+3 0.2
+3 1 1
+11 Mesh case 1
+7 Meshing
+0 
+3 0 1
+0
+3 2 9 20
+14
+1 6
+6
+1
+9 1  1 20
+<index>
+3
+smd 8
+auxmm 603
+attributes 620
+</index>
+<header>
+4
+40 file:///users/zaided/models/revolve5.smd27 model.nonmanifold.parasolid6 # 1 0 0 
+0
+1
+6 native4
+18 ./revolve5_nat.x_t21 nativeModel.parasolid6 # 1 0 0 
+</header>
+1504 1554                                                                                                                      
